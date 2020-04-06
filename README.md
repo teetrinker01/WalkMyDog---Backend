@@ -1,5 +1,33 @@
 # WalkMyDog
 
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Run your end-to-end tests
+```
+npm run test:e2e
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
 # user stories
 
 Users can signup.
@@ -26,11 +54,14 @@ Please note that all routes in this API should be called with the `/api` prefix 
 POST http://localhost:3000/api/auth/signup
 ```
 ### AUTHENTICATION ENDPOINTS
+
 METHOD | URL                | What does it do
 -------|--------------------|---------------------------------
-POST   | `auth/signup`  | Create a new account
-POST   | `auth/login`   | Authenticates a user
+POST   | `auth/signup`      | Create a new account
+POST   | `auth/login`       | Authenticates a user
+
 ### LESSONS ENDPOINTS
+
 METHOD | URL                    | What does it do
 -------|------------------------|---------------------------------
 GET    | `lessons`              | Get All Lessons
@@ -38,7 +69,9 @@ POST   | `lessons`              | Create Lesson
 GET    | `lessons/:lessonId`    | Get One Lesson
 PUT    | `lessons/:lessonId`    | Update Lesson
 DELETE | `lessons/:lessonId`    | Delete Lesson
+
 ### USER ENDPOINTS (Authenticated)
+
 All these endpoints require a `token` to be sent within the HTTP Headers.
 METHOD | URL                     | What does it do
 -------|-------------------------|---------------------------------
