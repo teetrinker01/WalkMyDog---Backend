@@ -1,4 +1,7 @@
 const DogModel = require('../models/dog.model')
+const RequestModel = require('../models/request.model')
+const RatingModel = require('../models/rating.model')
+// comprobar si creamos controller de requests
 const { handleError } = require('../utils')
 
 module.exports = {
@@ -7,6 +10,8 @@ module.exports = {
   getDogById,
   updateDogById,
   deleteDogById,
+  createRequest,
+  postDogRating
 }
 
 function createDog (req, res) {
@@ -48,4 +53,22 @@ function updateDogById (req, res) {
     })
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
+}
+
+function createRequest (req, res) {
+  RequestModel
+  .create({
+    ...req.body,
+  })
+  .then(response => res.json(response))
+  .catch((err) => handleError(err, res))
+}
+
+function postDogRating (req, res) {
+  RatingModel
+  .create({
+    ...req.body,
+  })
+  .then(response => res.json(response))
+  .catch((err) => handleError(err, res))
 }

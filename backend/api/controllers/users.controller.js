@@ -2,17 +2,9 @@ const UserModel = require('../models/users.model')
 const { handleError } = require('../utils')
 
 module.exports = {
-  getAllUsers,
   getUserById,
   deleteUserById,
   updateUser
-}
-
-function getAllUsers (req, res) {
-  UserModel
-    .find()
-    .then(response => res.json(response))
-    .catch((err) => handleError(err, res))
 }
 
 function getUserById (req, res) {
