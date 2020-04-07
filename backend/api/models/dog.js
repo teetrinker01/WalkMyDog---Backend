@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
+const dogSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Dog Name is required']
@@ -46,12 +46,12 @@ const userSchema = new mongoose.Schema({
   },
   img: {
     type: Array
-  }
+  },
   createdAt: {
     type: Number,
     default: Date.now() // Get a timestamp :)
   }
 })
 
-const userModel = mongoose.model('dog', userSchema)
-module.exports = userModel
+const dogModel = mongoose.model('dog', dogSchema)
+module.exports = dogModel

@@ -19,15 +19,32 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  role: {
+  phone: {
     type: String,
-    enum: ['host', 'regular'],
-    required: false,
-    default: 'regular'
+    required: true,
   },
-  birthDate: {
-    type: Date,
-    required: false
+  dni: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  zipcode: {
+    type: Number,
+    required: true,
+  },
+  city: {
+    type: String,
+    required: true,
+  },
+  profileimages: {
+    type: Array,
+  },
+  dog: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'dog'
   },
   createdAt: {
     type: Number,

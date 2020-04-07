@@ -1,33 +1,16 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'Name is required']
+const ratingSchema = new mongoose.Schema({
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user'
   },
-  email: {
-    type: String,
-    required: [true, 'Email is required'],
-    validate: {
-      validator (value) {
-        return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value)
-      }
-    },
-    unique: [true, 'This is email is registered']
+  walker: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user'
   },
-  password: {
-    type: String,
-    required: true
-  },
-  role: {
-    type: String,
-    enum: ['host', 'regular'],
-    required: false,
-    default: 'regular'
-  },
-  birthDate: {
-    type: Date,
-    required: false
+  rating: {
+    type: Number,
   },
   createdAt: {
     type: Number,
@@ -35,5 +18,5 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-const userModel = mongoose.model('rating', userSchema)
-module.exports = userModel
+const ratingModel = mongoose.model('rating', ratingSchema)
+module.exports = ratingModel
