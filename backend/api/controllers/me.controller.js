@@ -1,4 +1,4 @@
-const UserModel = require("../models/users");
+const UserModel = require("../models/users.model");
 const DogModel = require("../models/dogs.model");
 const RequestModel = require("../models/request.model");
 const RatingModel = require("../models/rating.model");
@@ -17,7 +17,7 @@ module.exports = {
 };
 
 function getMe(req, res) {
-  UserModel.find()
+  UserModel.find(res.locals.user._id)
     .then((response) => res.json(response))
     .catch((err) => handleError(err, res));
 }

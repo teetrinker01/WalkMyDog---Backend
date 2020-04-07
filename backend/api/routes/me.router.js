@@ -11,13 +11,13 @@ const {
   deleteRequestById
 } = require('../controllers/me.controller')
 
-router.get('/me',getMe)
-router.put('/me', putMe)
-router.delete('/me', deleteMe)
-router.get('/me/dog', getMyDog)
-router.get('/me/requests', getAllRequests)
-router.put('/me/requests/:requestId', putRequestById)
-router.get('/me/requests/:requestId', getRequestById)
-router.delete('/me/request/:requestId', deleteRequestById)
+router.get('/',getMe)
+router.put('/', putMe)
+router.delete('/', deleteMe)
+router.get('/dog', getMyDog)
+router.get('/requests', getAllRequests)
+router.put('/requests/:requestId', putRequestById)
+router.get('/requests/:requestId', getRequestById)
+router.delete('/request/:requestId', deleteRequestById)
 
 module.exports = router
