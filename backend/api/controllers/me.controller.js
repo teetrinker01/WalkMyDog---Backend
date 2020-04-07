@@ -1,5 +1,5 @@
 const UserModel = require("../models/users");
-const DogModel = require("../models/dog.model");
+const DogModel = require("../models/dogs.model");
 const RequestModel = require("../models/request.model");
 const RatingModel = require("../models/rating.model");
 // comprobar si creamos controller de requests

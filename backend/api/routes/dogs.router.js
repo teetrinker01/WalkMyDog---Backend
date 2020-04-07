@@ -10,13 +10,13 @@ const {
   postDogRating
 } = require('../controllers/dogs.controller')
 
-router.post('/dogs',createDog)
-router.get('/dogs', getAllDogs)
-router.get('/dogs/:dogid', getDogById)
-router.put('/dogs/:dogid', updateDogById)
-router.delete('/dogs/:dogid', deleteDogById)
-router.post('/dogs/:dogid/request', createRequest)
-router.post('/dogs/:dogid/rating', postDogRating)
+router.post('/',createDog)
+router.get('/', getAllDogs)
+router.get('/:dogid', getDogById)
+router.put('/:dogid', updateDogById)
+router.delete('/:dogid', deleteDogById)
+router.post('/:dogid/request', createRequest)
+router.post('/:dogid/rating', postDogRating)
 
 
 

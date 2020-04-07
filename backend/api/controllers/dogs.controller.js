@@ -1,4 +1,4 @@
-const DogModel = require('../models/dog.model')
+const DogModel = require('../models/dogs.model')
 const RequestModel = require('../models/request.model')
 const RatingModel = require('../models/rating.model')
 // comprobar si creamos controller de requests
@@ -33,21 +33,21 @@ function getAllDogs (req, res) {
 
 function getDogById (req, res) {
   DogModel
-    .findById(req.params.id)
+    .findById(req.params.dogid)
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
 
 function deleteDogById (req, res) {
   DogModel
-    .remove({ _id: req.params.id })
+    .remove({ _id: req.params.dogid })
     .then(response => res.json(response))
     .catch(err => handleError(err, res))
 }
 
 function updateDogById (req, res) {
   DogModel
-    .findByIdAndUpdate(req.params.id, req.body, {
+    .findByIdAndUpdate(req.params.dogid, req.body, {
       new: true,
       runValidators: true
     })
