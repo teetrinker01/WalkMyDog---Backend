@@ -17,7 +17,7 @@ module.exports = {
 };
 
 function getMe(req, res) {
-  UserModel.find(res.locals.user._id)
+  UserModel.find()
     .then((response) => res.json(response))
     .catch((err) => handleError(err, res));
 }
@@ -46,7 +46,7 @@ function deleteMe(req, res) {
 }
 
 function getMyDog(req, res) {
-  DogModel.findById(req.params.id)
+  DogModel.find()
     .then((response) => res.json(response))
     .catch((err) => handleError(err, res));
 }
@@ -58,7 +58,7 @@ function getAllRequests(req, res) {
 }
 
 function putRequestById(req, res) {
-  RequestModel.findByIdAndUpdate(req.params.id, req.body, {
+  RequestModel.findByIdAndUpdate(req.params.requestId, req.body, {
     new: true,
     runValidators: true,
   })
@@ -67,13 +67,13 @@ function putRequestById(req, res) {
 }
 
 function getRequestById(req, res) {
-  RequestModel.findById(req.params.id)
+  RequestModel.findById(req.params.requestId)
     .then((response) => res.json(response))
     .catch((err) => handleError(err, res));
 }
 
 function deleteRequestById(req, res) {
-  RequestModel.remove({ _id: req.params.id })
+  RequestModel.remove({ _id: req.params.requestId })
     .then((response) => res.json(response))
     .catch((err) => handleError(err, res));
 }
