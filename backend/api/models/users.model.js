@@ -46,6 +46,10 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'dog'
   },
+  request: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'request'
+  },
   createdAt: {
     type: Number,
     default: Date.now() // Get a timestamp :)

@@ -10,7 +10,7 @@ const { authUser } = require('../utils') // Authenticated Route
 router.use('/auth', authRouter)
 router.use('/dogs', dogsRouter)
 router.use('/users', usersRouter)
-router.use('/me', meRouter)
+router.use('/me', authUser, meRouter)
 
 router.get('/whoami', authUser, (req, res) => {
   res.send(`hi there! ${res.locals.user.name}`)

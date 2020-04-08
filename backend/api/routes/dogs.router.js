@@ -10,14 +10,12 @@ const {
   postDogRating
 } = require('../controllers/dogs.controller')
 
-router.post('/',createDog)
+router.post('/', createDog)
 router.get('/', getAllDogs)
 router.get('/:dogid', getDogById)
 router.put('/:dogid', updateDogById)
 router.delete('/:dogid', deleteDogById)
 router.post('/:dogid/request', createRequest)
 router.post('/:dogid/rating', postDogRating)
-
-
 
 module.exports = router

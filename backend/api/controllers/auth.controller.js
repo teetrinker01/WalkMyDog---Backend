@@ -9,7 +9,6 @@ module.exports = {
 }
 
 function signup (req, res) {
-  console.log("hola")
   UserModel
     .create({
       ...req.body,
@@ -27,7 +26,7 @@ function signup (req, res) {
       return res.json({
         token: token,
         email: req.body.email,
-        name: req.body.name,
+        name: req.body.name
       })
     })
 }

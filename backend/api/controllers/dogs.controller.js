@@ -16,13 +16,12 @@ module.exports = {
 
 function createDog (req, res) {
   DogModel
-  .create({
-    ...req.body,
-  })
-  .then(response => res.json(response))
-  .catch((err) => handleError(err, res))
+    .create({
+      ...req.body
+    })
+    .then(response => res.json(response))
+    .catch((err) => handleError(err, res))
 }
-
 
 function getAllDogs (req, res) {
   DogModel
@@ -57,18 +56,18 @@ function updateDogById (req, res) {
 
 function createRequest (req, res) {
   RequestModel
-  .create({
-    ...req.body,
-  })
-  .then(response => res.json(response))
-  .catch((err) => handleError(err, res))
+    .create({
+      ...req.body
+    })
+    .then(response => res.json(response))
+    .catch((err) => handleError(err, res))
 }
 
 function postDogRating (req, res) {
   RatingModel
-  .create({
-    ...req.body,
-  })
-  .then(response => res.json(response))
-  .catch((err) => handleError(err, res))
+    .create({
+      ...req.body
+    })
+    .then(response => res.json(response))
+    .catch((err) => handleError(err, res))
 }
