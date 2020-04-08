@@ -50,6 +50,10 @@ const userSchema = new mongoose.Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'request'
   },
+  rating: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'rating'
+  },
   createdAt: {
     type: Number,
     default: Date.now() // Get a timestamp :)

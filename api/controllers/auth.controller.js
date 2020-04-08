@@ -20,7 +20,7 @@ function signup (req, res) {
       const token = jwt.sign(
         { email: req.body.email },
         process.env.SECRET, // TAKE SECRET KEY FROM .ENV
-        { expiresIn: '1w' }
+        { expiresIn: '1d' }
       )
 
       return res.json({
@@ -30,6 +30,30 @@ function signup (req, res) {
       })
     })
 }
+/*function signup (req, res) {
+  const hashedPwd = bcrypt.hashSync(req.body.password, 10)
+  const userBody = {
+    ...req.body,
+    password: hashedPwd
+  }
+
+  UserModel
+    .create(userBody)
+    .then(() => {
+      const userData = { email: req.body.email }
+
+      const token = jwt.sign(
+        userData,
+        process.env.SECRET // TAKE SECRET KEY FROM .ENV
+        //{ expiresIn: '1w' }
+      )
+
+      return res.json({ token: token, ...userData })
+    })
+    .catch((err) => {
+      res.status(403).json({ error: err })
+    })
+}*/
 
 function login (req, res) {
   UserModel
