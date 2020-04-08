@@ -15,14 +15,12 @@ function signup (req, res) {
       password: bcrypt.hashSync(req.body.password || '', 10)
     },
     function (err, doc) {
-      console.log(err)
       if (err) { res.status(403).json({ error: err.errors }) }
       const token = jwt.sign(
         { email: req.body.email },
         process.env.SECRET, // TAKE SECRET KEY FROM .ENV
-        { expiresIn: '1d' }
+        { expiresIn: '1w' }
       )
-
       return res.json({
         token: token,
         email: req.body.email,
@@ -30,30 +28,6 @@ function signup (req, res) {
       })
     })
 }
-/*function signup (req, res) {
-  const hashedPwd = bcrypt.hashSync(req.body.password, 10)
-  const userBody = {
-    ...req.body,
-    password: hashedPwd
-  }
-
-  UserModel
-    .create(userBody)
-    .then(() => {
-      const userData = { email: req.body.email }
-
-      const token = jwt.sign(
-        userData,
-        process.env.SECRET // TAKE SECRET KEY FROM .ENV
-        //{ expiresIn: '1w' }
-      )
-
-      return res.json({ token: token, ...userData })
-    })
-    .catch((err) => {
-      res.status(403).json({ error: err })
-    })
-}*/
 
 function login (req, res) {
   UserModel

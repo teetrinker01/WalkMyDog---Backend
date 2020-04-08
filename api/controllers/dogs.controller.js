@@ -1,4 +1,5 @@
 const DogModel = require('../models/dogs.model')
+const UserModel = require('../models/users.model')
 const RequestModel = require('../models/request.model')
 const RatingModel = require('../models/rating.model')
 // comprobar si creamos controller de requests
@@ -19,7 +20,15 @@ function createDog (req, res) {
     .create({
       ...req.body
     })
-    .then(response => res.json(response))
+    .then(response => {
+      UserModel
+        .findById(req.body.owner)
+        .then(owner => {
+          owner.request.push(response._id)
+          owner.save()
+        })
+      res.json(response)
+    })
     .catch((err) => handleError(err, res))
 }
 
@@ -59,7 +68,21 @@ function createRequest (req, res) {
     .create({
       ...req.body
     })
-    .then(response => res.json(response))
+    .then(response => {
+      UserModel
+        .findById(req.body.owner)
+        .then(owner => {
+          owner.request.push(response._id)
+          owner.save()
+        })
+      UserModel
+        .findById(req.body.walker)
+        .then(walker => {
+          walker.request.push(response._id)
+          walker.save()
+        })
+      res.json(response)
+    })
     .catch((err) => handleError(err, res))
 }
 
@@ -68,6 +91,20 @@ function postDogRating (req, res) {
     .create({
       ...req.body
     })
-    .then(response => res.json(response))
+    .then(response => {
+      UserModel
+        .findById(req.body.owner)
+        .then(owner => {
+          owner.request.push(response._id)
+          owner.save()
+        })
+      UserModel
+        .findById(req.body.walker)
+        .then(walker => {
+          walker.request.push(response._id)
+          walker.save()
+        })
+      res.json(response)
+    })
     .catch((err) => handleError(err, res))
 }
