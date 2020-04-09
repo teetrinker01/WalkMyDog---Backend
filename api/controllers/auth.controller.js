@@ -8,7 +8,7 @@ module.exports = {
   login
 }
 
-function signup (req, res) {
+/*function signup (req, res) {
   UserModel
     .create({
       ...req.body,
@@ -27,6 +27,32 @@ function signup (req, res) {
       })
     })
     .catch(err => res.status(403).json({ error: err.errors }))
+}
+*/
+
+function signup (req, res) {
+  const hashedPwd = bcrypt.hashSync(req.body.user_password, 10)
+  const userBody = {
+    email: req.body.user_email,
+    password: hashedPwd
+  }
+
+  UserModel
+    .create(userBody)
+    .then(() => {
+      const userData = { email: req.body.user_email }
+
+      const token = jwt.sign(
+        userData,
+        process.env.SECRET, // TAKE SECRET KEY FROM .ENV
+        { expiresIn: '1w' }
+      )
+
+      return res.json({ token: token, ...userData })
+    })
+    .catch((err) => {
+      res.status(403).json({ error: err })
+    })
 }
 
 function login (req, res) {
