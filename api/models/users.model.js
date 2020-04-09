@@ -21,26 +21,26 @@ const userSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    required: true,
+    required: true
   },
   dni: {
     type: String,
-    required: true,
+    required: true
   },
   address: {
     type: String,
-    required: true,
+    required: true
   },
   zipcode: {
     type: Number,
-    required: true,
+    required: true
   },
   city: {
     type: String,
-    required: true,
+    required: true
   },
   profileimages: {
-    type: Array,
+    type: Array
   },
   dog: {
     type: mongoose.Schema.Types.ObjectId,
