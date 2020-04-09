@@ -7,19 +7,19 @@ const dogSchema = new mongoose.Schema({
   },
   breed: {
     type: String,
-    required: true,
+    required: true
   },
-  size:{
+  size: {
     type: String,
     enum: ['Small', 'Medium', 'Large'],
-    required: true,
+    required: true
   },
   goodwith:{
     type: String,
     enum: ['Children', 'Cats', 'Dogs'],
-    required: true,
+    required: true
   },
-  character:{
+  character: {
     type: String,
     enum: ['Active', 'Laid back', 'Lazy', 'Obedient', 'Wild']
   },

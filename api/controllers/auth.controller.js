@@ -9,12 +9,13 @@ module.exports = {
 }
 
 function signup (req, res) {
+  console.log(req.headers)
   UserModel
     .create({
       ...req.body,
       password: bcrypt.hashSync(req.body.password || '', 10)
     })
-    .then(doc => {
+    .then((doc) => {
       const token = jwt.sign(
         { email: req.body.email },
         process.env.SECRET, // TAKE SECRET KEY FROM .ENV
@@ -26,7 +27,7 @@ function signup (req, res) {
         name: req.body.name
       })
     })
-    .catch(err => res.status(403).json({ error: err.errors }))
+    .catch(err => res.json({ error: err }))
 }
 
 function login (req, res) {
