@@ -13,9 +13,8 @@ function signup (req, res) {
     .create({
       ...req.body,
       password: bcrypt.hashSync(req.body.password || '', 10)
-    },
-    function (err, doc) {
-      if (err) { res.status(403).json({ error: err.errors }) }
+    })
+    .then(doc => {
       const token = jwt.sign(
         { email: req.body.email },
         process.env.SECRET, // TAKE SECRET KEY FROM .ENV
@@ -27,6 +26,7 @@ function signup (req, res) {
         name: req.body.name
       })
     })
+    .catch(err => res.status(403).json({ error: err.errors }))
 }
 
 function login (req, res) {
