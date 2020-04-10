@@ -42,9 +42,6 @@ const userSchema = new mongoose.Schema({
   profileimages: {
     type: Array
   },
-  img: {
-    type: Array
-  },
   dog: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'dog'
